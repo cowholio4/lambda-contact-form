@@ -1,0 +1,8 @@
+{
+    "name": "lamdba-email",
+    "dependencies": {
+        "nodemailer": "^1.4.0",
+        "nodemailer-ses-transport": "^1.3.0",
+        "qs" : "^4.0.0"
+    }
+}
