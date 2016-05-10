@@ -6,12 +6,15 @@ I made this in August 2015 for a startup I joined and haven't really looked at i
 
 # Instructions
 
-1. Upload to contact.js to Lamdba 
+1. Ensure your ~/.aws/credentials file is created
+2. Run the deploy script and record your ARN 
+    * npm install .
+    * AWS_REGION=us-west-2 node deploy.js
     * Record your ARN
-2. Create a new API in the Amazon API Gateway. https://us-west-2.console.aws.amazon.com/apigateway/home?region=us-west-2#/apis/create 
-    * Replace YOUR_LAMBDAS_ARN with your ARN from step 1.
+3. Create a new API in the Amazon API Gateway. https://us-west-2.console.aws.amazon.com/apigateway/home?region=us-west-2#/apis/create 
+    * Replace YOUR_LAMBDAS_ARN with your ARN from step 2.
     * Replace your Website with your website.
-3. Update your contact form with the host from step 2.
+4. Update your contact form with the host from step 3.
 
 ```
 <form method="post" action="https://API_GATEWAY/contact">
@@ -26,6 +29,5 @@ I made this in August 2015 for a startup I joined and haven't really looked at i
 
 # TODO
 
-1. Create deployment script. (easy wth aws-cli)
+1. Create deployment script for AWS API 
 2. Instructions. :D 
-3. Look into using policies instead of using tokens.
