@@ -13,26 +13,9 @@
       "post": {
         "consumes": [
           "application/json",
-          ".*",
           "application/x-www-form-urlencoded"
         ],
         "parameters": [
-          {
-            "in": "body",
-            "name": "FormData",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FormData"
-            }
-          },
-          {
-            "in": "body",
-            "name": "FormData",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/FormData"
-            }
-          },
           {
             "in": "body",
             "name": "FormData",
@@ -62,7 +45,13 @@
         },
         "x-amazon-apigateway-integration": {
           "responses": {
-            ".*": {
+            "application/json": {
+              "statusCode": "302",
+              "responseParameters": {
+                "method.response.header.Location": "'https://YOUR_WEBSITE?sent=true'"
+              }
+            },
+            "application/x-www-form-urlencoded": {
               "statusCode": "302",
               "responseParameters": {
                 "method.response.header.Location": "'https://YOUR_WEBSITE?sent=true'"
@@ -74,8 +63,7 @@
           "uri": "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/YOUR_LAMBDAS_ARN/invocations",
           "requestTemplates": {
             "application/json": "{\n    \"body\" : $input.json('$')\n}",
-            "application/x-www-form-urlencoded": "{\n    \"body\" : $input.json('$')\n}\n",
-            ".*": "{\n    \"body\" : $input.json('$')\n}"
+            "application/x-www-form-urlencoded": "{\n    \"body\" : $input.json('$')\n}\n"
           },
           "type": "aws"
         }

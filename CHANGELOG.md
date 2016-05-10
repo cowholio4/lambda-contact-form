@@ -6,3 +6,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - This changelog
 - Deployment script for lamdbda function
+- automatically generate a config.json file
