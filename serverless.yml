@@ -1,0 +1,31 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: serverless-contact-form
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  region: us-west-2
+  runtime: nodejs6.10
+  iamRoleStatements:
+    -  Effect: "Allow"
+       Action: 
+         - "ses:SendEmail"
+         - "ses:SendRawEmail"
+       Resource: "*"
+
+# The `functions` block defines what code to deploy
+functions:
+  contact:
+    handler: handler.contact
+    # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          path: contact
+          method: post
+          cors: true
